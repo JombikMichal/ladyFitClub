@@ -1,0 +1,179 @@
+body{
+	margin: 0;
+	background:#eeefed;
+	font-family: 'Source Sans Pro', sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+.div-body{
+	margin: 0 auto;
+	width: 1100px;
+}
+
+ul{
+	list-style-type: none;
+}
+
+.fa{
+	vertical-align: middle;
+}
+
+
+
+/****** part of navigation ***********/
+
+.div-person{
+	float: left;
+	padding: 30px 0px;
+}
+
+.div-social{
+	float: left;
+	text-align: right;
+	padding: 20px 0px;
+}
+
+
+
+.div-person li,
+.div-social li{
+	float: left;
+	margin-right: 20px;
+}
+
+.nav-color{
+	background-color: #39a3d4;
+}
+
+.div-person a,
+.div-person i{
+	color: #fff;
+	font-size: 18px;
+}
+
+
+.div-person a{
+	color: #fff;
+	font-size: 16px;
+}
+
+
+
+.div-person i{
+	color: #fff;
+	font-size: 20px;
+	margin-right: 10px;
+}
+
+
+.social-icon{
+	color: #989898;
+	background-color:#eeefed;
+	width: 50px;
+	height: 50px;
+	line-height: 48px;	
+	padding: 18px;
+	font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 800px){
+	.square{
+		background-color: blue;
+	}
+
+
+
+
+
+
+
+
+.container:before,
+.group:before,
+.menu:before,
+.container:after,
+.menu:after,
+.group:after{
+	content: " ";
+	display: table;
+}
+
+.group,
+.container,
+.menu{
+	*zoom:1;
+}
+
+.container:after,
+.group:after,
+.menu:after{
+	clear: both;
+}
