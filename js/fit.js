@@ -132,41 +132,36 @@ function setOverlay(overlayItem){
 $(document).on('keydown', function(e) {
   if(e.which === 27) {
      $("body").css("overflow", "auto");
-     stopSlider();
     overlayImageSlider.hide();
   }
 });
 
-
+$('.fit-image-wrapper').on('click',function(){
+  slider.children().last().show();
+  let a = $(this).find('data-pict');
+    console.log(a);
+});
  
 
-  slider.children().last().show();
-//  startSlider();
 
   $('.slider').on('click', function() {
+    
     slider.show();
-      startSlider();
+    startSlider();
   });
 
   function startSlider() {
     
       let lastImg = slider.children().last();
 
-      lastImg.prev().fadeIn(1500);
-      lastImg.fadeOut(1500, function() {
+      lastImg.prev().fadeIn(1000);
+      lastImg.fadeOut(1000, function() {
         $(this).prependTo(slider);
       });
-      // slider.prepend(lastImg);
-    
-    sliderRunning = true;
+ 
   }
 
-  function stopSlider() {
-    clearInterval(intervalId);
-    sliderRunning = false;
-  }
 
-//startSlider();
 
 
 
