@@ -6,12 +6,9 @@ let overlayImgWrapper = $('<div>',{
 })
 
 let showMenuResp = $('.nav-menu-resp ul');
-let fitImage = $('.fit-image-wrapper a');
 let imageFitArray = ['img/fitness/fit1.jpg','img/fitness/fit2.jpg','img/fitness/fit3.jpg'];
 let imageSlider = $('.slider');
-
-
-let fitImagee = $('.fit-image-wrapper img');
+let fitImage = $('.fit-image-wrapper img');
 let overlayImageSlider = $('<div>', {
   class: 'overlay-slider'
 });
@@ -21,15 +18,40 @@ let overlayDiv = $('<div>', {
 });
 
 
+
+
+let imageSliderActive = false;
+
+
 let slider = $('.slider');
- slider.hide();
-  let sliderRunning = false;
-  let intervalId = null;
+slider.hide();
 
 
-//imageSlider.appendTo(overlayDiv);
+let moveImgWrapperRight = $('<div>', {
+  class: 'move-wrapp-r'
+});
+
+let moveImgWrapperLeft = $('<div>', {
+  class: 'move-wrapp-l'
+});
+
+let arrowRight = $('<i>', {
+  class: 'fa fa-arrow-circle-o-right',
+});
+let arrowLeft = $('<i>', {
+  class: 'fa fa-arrow-circle-o-left',
+});
+
+
+arrowLeft.appendTo(moveImgWrapperLeft);
+arrowRight.appendTo(moveImgWrapperRight);
+moveImgWrapperRight.appendTo('.fit-image-slider');
+moveImgWrapperLeft.appendTo('.fit-image-slider');
 overlayDiv.appendTo(overlayImageSlider);
 overlayImageSlider.appendTo('body');
+$('slider-img move-wrapp-l').hide();
+$('move-wrapp-r').hide();
+
 
 
 
@@ -39,8 +61,8 @@ $('#active-menu').on('click',function(){
 
 
 
-
-
+$('.fit-wrapper').hide();
+$('.trends-wrapper').hide();
 
 
 
@@ -53,7 +75,34 @@ $(document).on('scroll', function() {
   }else if(offset === 0){
     navWrapp.removeClass('nav-wrapper-scroll'); 
   }
+  if(offset > 200){
+     $('.fit-wrapper').show().addClass('slide-from-left');
+  }
+   if(offset > 454){
+     $('.cardio').show().addClass('show-part');
+  }
+  if(offset > 900){
+     $('.trends-wrapper').show().addClass('slide-from-left');
+  }
+   if(offset > 1100){
+     $('.solar-wrapper').show().addClass('show-part');
+  }
+    if(offset > 2070){
+     $('.contact-wrapper').show().addClass('show-contact');
+  }
 });
+
+
+$(slider).on('mouseenter',function(){
+  $('move-wrapp-l').show();
+  $('move-wrapp-r').show();
+});
+
+$(slider).on('mouseenter',function(){
+  $('move-wrapp-l').hide();
+  $('move-wrapp-r').hide();
+});
+
 
 
 $('.nav-menu a ').on('click', function(e) {
@@ -80,32 +129,22 @@ $('.nav-menu-resp a').on('click', function(e) {
   });
 });
 
+console.log($(document).scrollTop());
+
+
+$('.overlay-slider').on('click', function(e){
+  if(e.target.className === 'overlay-slider'){
+      closeOverlay();
+  }
+});
 
 
 
-// fitImage.on('click', function(e) {
-//   e.preventDefault();
-//   let imgSrc = $(this).attr('href');
-//   setOverlay(imgSrc);
-// });
-
-
-
-
-// function setOverlay(overlayItem){
-//   $("body").css("overflow", "hidden");
-//   let img = $('<img>', {
-//     src: overlayItem
-//   });
-//   overlay.html(img).show();
-// }
-
-// $(document).on('keydown', function(e) {
-//   if(e.which === 27) {
-//      $("body").css("overflow", "auto");
-//     overlay.hide();
-//   }
-// });
+function closeOverlay(){
+  imageSliderActive = false;
+  $("body").css("overflow", "auto");
+    overlayImageSlider.hide();
+}
 
 $('.fit-image-wrapper').on('click',function(){
   console.log($(this).children());
@@ -113,8 +152,11 @@ $('.fit-image-wrapper').on('click',function(){
 
 
 
-fitImagee.on('click', function(e) {
-  overlayImageSlider.show();
+fitImage.on('click', function(e) {
+  imageSliderActive = true;
+  $("body").css("overflow", "hidden");
+  slider.children().last().show();
+  overlayImageSlider.fadeIn(1000);
   $('.slider').appendTo(overlayDiv);
   slider.show();
   console.log($(this).eq());
@@ -131,42 +173,39 @@ function setOverlay(overlayItem){
 
 $(document).on('keydown', function(e) {
   if(e.which === 27) {
-     $("body").css("overflow", "auto");
-    overlayImageSlider.hide();
+    closeOverlay();
+  }
+  if(imageSliderActive === true){
+   if(e.which === 39 || e.which === 37){
+    startSlider();
+   }
   }
 });
 
-$('.fit-image-wrapper').on('click',function(){
-  slider.children().last().show();
-  let a = $(this).find('data-pict');
-    console.log(a);
-});
- 
-
-
-  $('.slider').on('click', function() {
-    
-    slider.show();
-    startSlider();
-  });
 
   function startSlider() {
     
       let lastImg = slider.children().last();
 
-      lastImg.prev().fadeIn(1000);
-      lastImg.fadeOut(1000, function() {
+      lastImg.prev().fadeIn(1500);
+      lastImg.fadeOut(1500, function() {
         $(this).prependTo(slider);
       });
- 
   }
 
 
 
+$('.move-wrapp-r').on('click',function(e){
+  console.log(e.target.className);
+    slider.show();
+      startSlider();
+});
 
-
-
-
+$('.move-wrapp-l').on('click',function(e){
+  console.log(e.target.className);
+    slider.show();
+      startSlider();
+});
 
 
 $('.fit-image-wrapper').find('aside').on('click',function(){
@@ -201,9 +240,9 @@ $('.overlay').on('click',function(){
 
 
    function initMap() {
-        let uluru = {lat: 48.4414538, lng: 17.0128583};
+        let uluru = {lat: 48.4402907, lng: 17.0163606};
         let map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 17,
+          zoom: 18,
           center: uluru
         });
         let marker = new google.maps.Marker({
