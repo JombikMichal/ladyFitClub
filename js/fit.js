@@ -67,31 +67,6 @@ $('.trends-wrapper').hide();
 
 
 
-$(document).on('scroll', function() {
-  let navWrapp = $('.nav-wrapper');
-  let offset = $(this).scrollTop();
-  if(offset > 0){
-    navWrapp.addClass('nav-wrapper-scroll');
-  }else if(offset === 0){
-    navWrapp.removeClass('nav-wrapper-scroll'); 
-  }
-  if(offset > 200){
-     $('.fit-wrapper').show().addClass('slide-from-left');
-  }
-   if(offset > 454){
-     $('.cardio').show().addClass('show-part');
-  }
-  if(offset > 900){
-     $('.trends-wrapper').show().addClass('slide-from-left');
-  }
-   if(offset > 1100){
-     $('.solar-wrapper').show().addClass('show-part');
-  }
-    if(offset > 2070){
-     $('.contact-wrapper').show().addClass('show-contact');
-  }
-});
-
 
 $(slider).on('mouseenter',function(){
   $('move-wrapp-l').show();
@@ -104,6 +79,8 @@ $(slider).on('mouseenter',function(){
 });
 
 
+
+/************** menu *********************************/
 
 $('.nav-menu a ').on('click', function(e) {
   e.preventDefault();
@@ -129,7 +106,13 @@ $('.nav-menu-resp a').on('click', function(e) {
   });
 });
 
-console.log($(document).scrollTop());
+
+
+
+
+
+
+/******************************** image slider *******************/
 
 
 $('.overlay-slider').on('click', function(e){
@@ -137,19 +120,6 @@ $('.overlay-slider').on('click', function(e){
       closeOverlay();
   }
 });
-
-
-
-function closeOverlay(){
-  imageSliderActive = false;
-  $("body").css("overflow", "auto");
-    overlayImageSlider.hide();
-}
-
-$('.fit-image-wrapper').on('click',function(){
-  console.log($(this).children());
-});
-
 
 
 fitImage.on('click', function(e) {
@@ -163,36 +133,20 @@ fitImage.on('click', function(e) {
 
 });
 
-function setOverlay(overlayItem){
-  $("body").css("overflow", "hidden");
-  let img = $('<img>', {
-    src: overlayItem
-  });
-  overlay.html(img).show();
-}
+$('.overlay').on('click',function(){
+  console.log($(this).children());
+  
 
-$(document).on('keydown', function(e) {
-  if(e.which === 27) {
-    closeOverlay();
-  }
-  if(imageSliderActive === true){
-   if(e.which === 39 || e.which === 37){
-    startSlider();
-   }
-  }
+   let imgSrc = imageFitArray[2];
+  setOverlay(imgSrc);
+  console.log(imgSrc);
+
 });
 
 
-  function startSlider() {
-    
-      let lastImg = slider.children().last();
-
-      lastImg.prev().fadeIn(1500);
-      lastImg.fadeOut(1500, function() {
-        $(this).prependTo(slider);
-      });
-  }
-
+$('.fit-image-wrapper').on('click',function(){
+  console.log($(this).children());
+});
 
 
 $('.move-wrapp-r').on('click',function(e){
@@ -214,21 +168,84 @@ $('.fit-image-wrapper').find('aside').on('click',function(){
   console.log($(this).find('a').attr('href'));
   $(this).find('a');
   console.log( $(this).index('a'));
-})
-
-
-
-
-
-$('.overlay').on('click',function(){
-  console.log($(this).children());
-  
-
-   let imgSrc = imageFitArray[2];
-  setOverlay(imgSrc);
-  console.log(imgSrc);
-
 });
+
+
+
+function setOverlay(overlayItem){
+  $("body").css("overflow", "hidden");
+  let img = $('<img>', {
+    src: overlayItem
+  });
+  overlay.html(img).show();
+}
+
+function closeOverlay(){
+  imageSliderActive = false;
+  $("body").css("overflow", "auto");
+    overlayImageSlider.hide();
+}
+
+function startSlider() {
+    
+      let lastImg = slider.children().last();
+
+      lastImg.prev().fadeIn(1500);
+      lastImg.fadeOut(1500, function() {
+        $(this).prependTo(slider);
+      });
+  }
+
+
+
+
+
+
+
+/**************************** document **********************************/
+
+$(document).on('scroll', function() {
+  let navWrapp = $('.nav-wrapper');
+  let offset = $(this).scrollTop();
+  if(offset > 0){
+    navWrapp.addClass('nav-wrapper-scroll');
+  }else if(offset === 0){
+    navWrapp.removeClass('nav-wrapper-scroll'); 
+  }
+  if(offset > 200){
+     $('.fit-wrapper').show().addClass('slide-from-left');
+  }
+   if(offset > 454){
+     $('.cardio').show().addClass('show-part');
+  }
+  if(offset > 900){
+     $('.trends-wrapper').show().addClass('slide-from-left');
+  }
+   if(offset > 1100){
+     $('.solar-wrapper').show().addClass('show-part');
+  }
+    if(offset > 2070){
+     $('.contact-wrapper').show().addClass('show-contact');
+  }
+});
+
+$(document).on('keydown', function(e) {
+  if(e.which === 27) {
+    closeOverlay();
+  }
+  if(imageSliderActive === true){
+   if(e.which === 39 || e.which === 37){
+    startSlider();
+   }
+  }
+});
+
+
+
+
+
+
+
 
 
   $( function() {
@@ -238,6 +255,8 @@ $('.overlay').on('click',function(){
   } );
 
 
+
+/************************ google maps api *********************************/
 
    function initMap() {
         let uluru = {lat: 48.4402907, lng: 17.0163606};
