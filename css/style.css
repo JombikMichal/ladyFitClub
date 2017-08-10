@@ -132,9 +132,11 @@ h1{
 
 .about-wrapper p,
 .about-wrapper span{
-	font-family: 'Artifika', serif;
-	font-size: 70px;
+	font-size: 85px;
 	text-transform: uppercase;
+	//font-family: 'Cinzel', serif;
+	font-family: 'Baloo Bhaina', cursive;
+	text-shadow: 2px 4px #000;
 }
 
 .about-wrapper p {
@@ -775,6 +777,13 @@ tr:first-child{
 
 
 
+@media (max-width: 1490px){
+	.about-wrapper p,
+	.about-wrapper span{
+		font-size: 60px;
+		
+	}
+}
 
 @media (max-width: 1320px){
 	.trends-wrapper{
@@ -799,6 +808,15 @@ tr:first-child{
 		padding: 10px;
 	}
 }
+
+@media (max-width: 1220px){
+	.about-wrapper p,
+	.about-wrapper span{
+		font-size: 40px;
+		
+	}
+}
+
 @media (max-width: 1180px){
 	.cardio-inside-wrapper{
 		padding: 10px;
@@ -831,7 +849,6 @@ tr:first-child{
 @media (max-width: 950px){
 	.about-wrapper{
 		left: 1%;
-		top: 10%;
 		width: 100%;
 	}
 }
@@ -845,6 +862,15 @@ tr:first-child{
 	}
 	.trends-text-wrapper{
 		width: 100%;
+	}
+}
+
+@media (max-width: 850px){
+	.about-wrapper p,
+	.about-wrapper span{
+		font-size: 35px;
+		float: none;
+		
 	}
 }
 
@@ -876,12 +902,7 @@ tr:first-child{
 
 
 @media (max-width: 470px){
-	.about-wrapper p{
-		font-size: 15px;
-	}
-	.about-wrapper span{
-		font-size: 20px;
-	}
+
 	.about-wrapper h1{
 		font-size: 15px;
 	}
@@ -1029,3 +1050,4 @@ tr:first-child{
 .group:after{
 	clear: both;
 }
+

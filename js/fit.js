@@ -256,7 +256,7 @@ $(document).on('keydown', function(e) {
 /************************ google maps api *********************************/
 
    function initMap() {
-        let uluru = {lat: 48.4402907, lng: 17.0163606};
+        let uluru = {lat: 48.440318, lng: 17.0166353};
         let map = new google.maps.Map(document.getElementById('map'), {
           zoom: 18,
           center: uluru
