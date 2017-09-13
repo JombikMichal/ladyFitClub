@@ -223,6 +223,13 @@ $(document).on('scroll', function() {
   }
     if(offset > 2070){
      $('.contact-wrapper').show().addClass('show-contact');
+     
+
+  }
+   if(offset === 2070){
+     $('.contact-wrapper').show().addClass('show-contact');
+     alert('ahoj');
+     
   }
 });
 
