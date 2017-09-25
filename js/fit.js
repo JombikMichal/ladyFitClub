@@ -204,6 +204,8 @@ function startSlider() {
 
 /**************************** document **********************************/
 
+// source tree - git visual
+
 $(document).on('scroll', function() {
   let navWrapp = $('.nav-wrapper');
   let offset = $(this).scrollTop();
